@@ -1,0 +1,16 @@
+[Unit]
+Description=Init Intel NUC, create home dir on data partition
+DefaultDependencies=no
+After=local-fs.target
+Before=rauc.service
+Before=network-pre.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/intel-nuc-init.sh
+Restart=on-failure
+RestartSec=5s
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target
