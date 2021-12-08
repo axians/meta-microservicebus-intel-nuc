@@ -16,7 +16,6 @@ SYSTEMD_SERVICE_${PN} = " intel-nuc-init.service"
 FILES_${PN} += "${systemd_system_unitdir}/intel-nuc-init.service \
                 ${bindir}/intel-nuc-init.sh"
 
-
 do_install() {
 
     # Install service file
@@ -30,3 +29,4 @@ do_install() {
 
 REQUIRED_DISTRO_FEATURES= "systemd"
 
+RDEPENDS_${PN} = "dmidecode"
