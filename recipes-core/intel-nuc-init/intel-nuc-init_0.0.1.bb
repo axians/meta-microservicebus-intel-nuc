@@ -16,21 +16,8 @@ SYSTEMD_SERVICE_${PN} = " intel-nuc-init.service"
 FILES_${PN} += "${systemd_system_unitdir}/intel-nuc-init.service \
                 ${bindir}/intel-nuc-init.sh"
 
-# Dynamic parameters
-MSB_HOME_DIR_PATH ??= "/data/home/msb"
-MSB_NODE_USER ??= "msb"
-MSB_NODE_GROUP ??= "msb"
-RAUC_VAR_DIR ?= "/data/var/rauc"
-IOTEDGE ??= "FALSE"
 
 do_install() {
-             
-    # Replace parameters in script
-    sed -i -e 's:@MSB_NODE_USER@:${MSB_NODE_USER}:g' ${WORKDIR}/intel-nuc-init.sh
-    sed -i -e 's:@MSB_NODE_GROUP@:${MSB_NODE_GROUP}:g' ${WORKDIR}/intel-nuc-init.sh
-    sed -i -e 's:@MSB_HOME_DIR_PATH@:${MSB_HOME_DIR_PATH}:g' ${WORKDIR}/intel-nuc-init.sh
-    sed -i -e 's:@RAUC_VAR_DIR@:${RAUC_VAR_DIR}:g' ${WORKDIR}/intel-nuc-init.sh
-    sed -i -e 's:@IOTEDGE@:${IOTEDGE}:g' ${WORKDIR}/intel-nuc-init.sh
 
     # Install service file
     install -d ${D}${systemd_system_unitdir}
