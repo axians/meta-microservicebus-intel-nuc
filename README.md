@@ -1,5 +1,11 @@
 # meta-microservicebus-intel-nuc
 
+<img src="./vpro-platform-color-ondark-rgb-3000px.png" style="width:8em">
+
+The `meta-microservicebus-intel-nuc` layer has been developed together with Intel® to support all Intel® NUC devices. 
+
+`Intel® NUC Rugged` is a PC kit that’s small on size but not on toughness or reliability. It features a fanless, ventless design to minimize particle intrusion, so it’s built to survive environments most PCs can’t—from a busy factory floor to a dusty warehouse. Given its modularity, it is designed to work with a range of Intel® NUC Compute Elements ranging from Intel® Celeron® processor all the way up to Intel® Core™ i7 vPro® processor
+
 This README file contains information on using microservicebus-intel-nuc to enable the use of microServiceBus with meta intel.
 
 
