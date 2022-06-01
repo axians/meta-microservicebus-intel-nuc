@@ -80,7 +80,7 @@ if [ -z "${hdnamelist}" ]; then
 fi
 
 # Set static install target
-TARGET_DEVICE_NAME="nvme0n1"
+TARGET_DEVICE_NAME="@ROOT_BLOCK_DEVICE_NAME@"
 
 for hdname in $hdnamelist; do
     # Display found hard drives and their basic info
