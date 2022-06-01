@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384
 
 include conf/image-uefi.conf
 
-RPROVIDES_${PN} += "virtual/grub-bootconf"
+RPROVIDES:${PN} = "virtual-grub-bootconf"
 
 SRC_URI += " \
     file://grub.cfg \
@@ -19,7 +19,7 @@ do_install() {
         install -m 644 ${WORKDIR}/grub.cfg ${D}${EFI_FILES_PATH}/grub.cfg
 }
 
-FILES_${PN} += "${EFI_FILES_PATH}"
+FILES:${PN} = "${EFI_FILES_PATH}/grub.cfg"
 
 do_deploy() {
 	install -m 644 ${WORKDIR}/grub.cfg ${DEPLOYDIR}

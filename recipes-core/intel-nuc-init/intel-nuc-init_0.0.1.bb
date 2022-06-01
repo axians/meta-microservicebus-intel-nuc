@@ -11,9 +11,9 @@ S = "${WORKDIR}"
 
 SYSTEMD_PACKAGES = "${PN}"
 
-SYSTEMD_SERVICE_${PN} = " intel-nuc-init.service"
+SYSTEMD_SERVICE:${PN} = " intel-nuc-init.service"
 
-FILES_${PN} += "${systemd_system_unitdir}/intel-nuc-init.service \
+FILES:${PN} += "${systemd_system_unitdir}/intel-nuc-init.service \
                 ${bindir}/intel-nuc-init.sh"
 
 do_install() {
@@ -29,4 +29,4 @@ do_install() {
 
 REQUIRED_DISTRO_FEATURES= "systemd"
 
-RDEPENDS_${PN} = "dmidecode"
+RDEPENDS:${PN} = "dmidecode"
