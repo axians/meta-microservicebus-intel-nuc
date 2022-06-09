@@ -13,6 +13,7 @@ SRC_URI += " \
 S = "${WORKDIR}"
 
 GRUB_RAUC_BOOT_CMD ?= "console=ttyS0,115200 net.ifnames=0 panic=60"
+ROOT_BLOCK_DEVICE_NAME ?= "nvme0n1"
 
 inherit deploy
 
