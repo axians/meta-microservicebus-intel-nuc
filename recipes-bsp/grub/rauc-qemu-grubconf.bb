@@ -12,14 +12,14 @@ SRC_URI += " \
 
 S = "${WORKDIR}"
 
-BOOT_CMDLINE ?= "console=ttyS0,115200 net.ifnames=0 panic=60"
+GRUB_RAUC_BOOT_CMD ?= "console=ttyS0,115200 net.ifnames=0 panic=60"
 
 inherit deploy
 
 do_install() {
   # Replace root block device name and boot cmdline parameters
   sed -i -e 's:@ROOT_BLOCK_DEVICE_NAME@:${ROOT_BLOCK_DEVICE_NAME}:g' ${WORKDIR}/grub.cfg
-  sed -i -e 's:@BOOT_CMDLINE@:${BOOT_CMDLINE}:g' ${WORKDIR}/grub.cfg
+  sed -i -e 's:@GRUB_RAUC_BOOT_CMD@:${GRUB_RAUC_BOOT_CMD}:g' ${WORKDIR}/grub.cfg
 
   # Install grub.cfg file
   install -d ${D}${EFI_FILES_PATH}
