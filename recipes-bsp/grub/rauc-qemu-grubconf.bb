@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384
 
 include conf/image-uefi.conf
 
-RPROVIDES_${PN} += "virtual/grub-bootconf"
+RPROVIDES:${PN} = "virtual-grub-bootconf"
 
 SRC_URI += " \
     file://grub.cfg \
@@ -12,14 +12,22 @@ SRC_URI += " \
 
 S = "${WORKDIR}"
 
+GRUB_RAUC_BOOT_CMD ?= "console=ttyS0,115200 net.ifnames=0 panic=60"
+ROOT_BLOCK_DEVICE_NAME ?= "nvme0n1"
+
 inherit deploy
 
 do_install() {
-        install -d ${D}${EFI_FILES_PATH}
-        install -m 644 ${WORKDIR}/grub.cfg ${D}${EFI_FILES_PATH}/grub.cfg
+  # Replace root block device name and boot cmdline parameters
+  sed -i -e 's:@ROOT_BLOCK_DEVICE_NAME@:${ROOT_BLOCK_DEVICE_NAME}:g' ${WORKDIR}/grub.cfg
+  sed -i -e 's:@GRUB_RAUC_BOOT_CMD@:${GRUB_RAUC_BOOT_CMD}:g' ${WORKDIR}/grub.cfg
+
+  # Install grub.cfg file
+  install -d ${D}${EFI_FILES_PATH}
+  install -m 644 ${WORKDIR}/grub.cfg ${D}${EFI_FILES_PATH}/grub.cfg
 }
 
-FILES_${PN} += "${EFI_FILES_PATH}"
+FILES:${PN} = "${EFI_FILES_PATH}/grub.cfg"
 
 do_deploy() {
 	install -m 644 ${WORKDIR}/grub.cfg ${DEPLOYDIR}

@@ -7,6 +7,6 @@ tmpfs                /run                 tmpfs      mode=0755,nodev,nosuid,stri
 tmpfs                /var/volatile        tmpfs      defaults              0  0
 
 # Add mount for boot, grubenv and data partition
-/dev/nvme0n1p1            /grubenv             auto       defaults,sync  0  0
-/dev/nvme0n1p4            /data                auto       defaults,sync  0  0
+/dev/@ROOT_BLOCK_DEVICE_NAME@p1            /grubenv             auto       defaults,sync  0  0
+/dev/@ROOT_BLOCK_DEVICE_NAME@p4            /data                auto       defaults,sync  0  0
 
