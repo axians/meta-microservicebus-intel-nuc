@@ -5,6 +5,7 @@ RDEPENDS:${PN} += "grub-editenv e2fsprogs-mke2fs"
 
 # Define compatible bundles (by default, same as RAUC)
 MSB_BUNDLE_COMPATIBLE ?= "${RAUC_BUNDLE_COMPATIBLE}"
+
 ROOT_BLOCK_DEVICE_NAME ?= "nvme0n1"
 
 do_install:prepend () {
