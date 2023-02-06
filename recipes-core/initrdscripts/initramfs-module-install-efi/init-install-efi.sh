@@ -81,6 +81,7 @@ fi
 
 # Set static install target
 TARGET_DEVICE_NAME="@ROOT_BLOCK_DEVICE_NAME@"
+echo "TARGET_DEVICE_NAME=${TARGET_DEVICE_NAME}"
 
 for hdname in $hdnamelist; do
     # Display found hard drives and their basic info
@@ -273,6 +274,14 @@ for types in bzImage zImage vmlinux vmlinuz fitImage; do
         cp $kernel /boot
     done
 done
+
+echo ""
+echo "****************************************"
+echo " CONSOLE...press CTRL+D if all is ok"
+echo "****************************************"
+echo ""
+/bin/bash
+echo end console
 
 umount /boot
 
