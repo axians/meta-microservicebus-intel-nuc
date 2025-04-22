@@ -1,2 +1,3 @@
 kconf non-hardware rauc.cfg
 kconf non-hardware docker.cfg
+kconf non-hardware wireguard.cfg
